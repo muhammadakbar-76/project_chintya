@@ -246,7 +246,7 @@ $(document).ready(function () {
 
 <footer class="main-footer">
     <div class="copyright text-right my-auto">
-            <strong>Copyright &copy;<a href="#">Ahmad Riyadi Arridho</a>.</strong>
+            <strong>Copyright &copy;<a href="#">2020</a>.</strong>
           </div>
   </footer>
 

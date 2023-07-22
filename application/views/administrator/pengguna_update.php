@@ -3,12 +3,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tambah Data Guru</h1>
+            <h1>Update Pengguna</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Tambah Data Guru</li>
+              <li class="breadcrumb-item active">Update Pengguna</li>
             </ol>
           </div>
         </div>
@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card card-primary">
-            <?php foreach($tb_admin as $ad) : ?>
+            <?php foreach($user as $ad) : ?>
            <form method="post" action="<?php echo base_url('administrator/pengguna/update_aksi') ?>">
             <div class="card-body">
 
@@ -49,8 +49,8 @@
                 <label for="inputStatus">Level</label>
                 <select class="form-control" name="level" value="<?php echo $ad->level ?>">
                   <option>admin</option>
-                  <option>guru</option>
-                  <option>siswa</option>
+                  <option>user</option>
+                  <option>pegawai</option>
                 </select>
               </div>             
               <?php endforeach; ?>

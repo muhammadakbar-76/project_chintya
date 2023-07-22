@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">SELAMAT DATANG ADMIN</h1>
+            <h1 class="m-0 text-dark">SELAMAT DATANG</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -19,63 +19,24 @@
 
     <!-- Main content -->
     <section class="content">
+      <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+          <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="col-md-12">
-            <div class="card">             
-              <div class="card-body">
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3><i class="fas fa-users"></i></h3>
 
-                    <!-- Post -->
-                      <!-- /.user-block -->
-                      <div class="row mb-3">
-                        <div class="col-sm-6">
-                          <img class="img-fluid" src="<?php echo base_url() ?>assets/img/unnamed.jpg" alt="Photo">
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6">
-                          <div class="row">
-                              <img class="img-fluid" src="<?php echo base_url() ?>assets/img/smk-unggulan-husada.jpg" alt="Photo">
-                            </div>
-                          </div>
-                          <!-- /.row -->
-                        </div>
+                <h2>Data Karyawan</h2>
+              </div>
+             
+              <a href="<?php echo base_url() ?>administrator/admin/karyawan" class="small-box-footer">Klik Disini <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
 
-
-                        <div class="card card-primary card-outline">
-                          <div class="card-body box-profile">
-                            <div class="text-left">
-                            <h2 style="font-family: inherit;" class="font-size-22 font-bold uc text-center">SMK UNGGULAN HUSADA BANJARMASIN</h2>
-                            <div class="row">
-                            <div class="col-md-13">
-                        <strong>Visi :</strong>
-                         <p>
-                              Menjadi tempat pendidikan farmasi dan analis kesehatan yang unggul, didukung dengan sains serta teknologi yang inovatif untuk menghasilkan lulusan yang profesional berdasarkan iman dan takwa kepada Tuhan Yang Maha Esa.
-                            </p>
-                      
-                        <strong>Misi :</strong>
-                          <p>1. Menyelenggarakan pendidikan efektif dan progresif ditunjang dengan kurikulum berbasis kompetensi.<p>
-                          <p>2. Inovasi pola pendidikan dengan memanfaatkan ilmu dan teknologi sehingga mendapatkan sumber daya manuasia yang berkualitas unggul.</p>
-                          <p>3. Menyelenggarakan pendidikan yang mampu menetukan prioritas, strategi dasar dan metodologi, mampu menyediakan sarana dan prasarana yang lebih memadai.</p>
-                          <p>4. Menerapkan pendidikan moral dan budi pekerti yang berorientasi pada integritas IQ, EQ, dan SQ sumber daya manusia</p>
-                      </div>
-              <!-- /.card-body -->
-                    </div>
-
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-
-                      
-        <!-- /.row -->
-        <!-- Main row -->
-  
-            <!-- /.card -->
-          </section>
-          <!-- right col -->
+          <!-- ./col -->
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>

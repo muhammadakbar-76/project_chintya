@@ -88,8 +88,8 @@
                 <select class="form-control custom-select" name="level">
                   <option selected disabled>-Pilih-</option>
                   <option>admin</option>
-                  <option>guru</option>
-                  <option>siswa</option>
+                  <option>user</option>
+                  <option>pegawai</option>
                 </select>
                 
               </div>

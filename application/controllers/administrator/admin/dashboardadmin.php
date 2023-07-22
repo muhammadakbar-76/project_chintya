@@ -18,8 +18,9 @@ class Dashboardadmin extends CI_Controller{
 
 	public function index()
 	{
+		$data['tb_notif'] = $this->notif_model->tampil_data()->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebaradmin');
+		$this->load->view('templates_administrator/sidebaradmin',$data);
 		$this->load->view('administrator/admin/dashboardadmin');
 		$this->load->view('templates_administrator/footer');
 	}

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','form_validation');
+$autoload['libraries'] = array('database', 'session', 'form_validation');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','form','security');
+$autoload['helper'] = array('url', 'form', 'security', 'custom');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('login_model','admin_model','dataguru_model','matpel_model','jurusan_model','datasiswa_model','jadwalguru_model','alumni_model','absenguru_model','tambahjurusan_model','absensiswa_model','nilaisiswa_model');
+$autoload['model'] = array('login_model', 'admin_model', 'karyawan_model', 'chart_model', 'golongan_model', 'pimpinan_model', 'absenkaryawan_model', 'absenpimpinan_model', 'absenlembur_model', 'gaji_model', 'gajilembur_model', 'cuti_model', 'promosi_model', 'cutitahunan_model', 'cutipenting_model', 'cutimelahirkan_model', 'cutisakit_model', 'penilaian_model', 'gajihan_model', 'notif_model');

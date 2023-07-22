@@ -3,12 +3,12 @@
 class Pengguna_model extends CI_Model{
 		public function tampil_data()
 		{
-			return $this->db->get('tb_admin');
+			return $this->db->get('user');
 		}
 
 		public function input_data($data)
 		{
-			$this->db->insert('tb_admin', $data);
+			$this->db->insert('user', $data);
 		}
 
 		public function edit_data($where,$table)

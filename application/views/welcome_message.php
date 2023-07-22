@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="assets/img/download.jpg">
+  
+
+  <link rel="icon" href="assets/img/1.jpg">
   <title>LOGIN</title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -18,17 +21,27 @@
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style type="text/css">
+  .style{
+    background: url('assets/img/bgblue.jpg') no-repeat fixed; background-size: cover;
+    background-size: 100% 100%;
+  }
+  </style>
+  <!-- <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> -->
 </head>
-<body class="hold-transition login-page">
-
-  <img src="<?php echo base_url() ?>assets/img/download.jpg ?>" class="brand-image img-circle elevation-3"
-           style="opacity: 200">
+<body class="hold-transition login-page style">
+  
+  <img src="<?php echo base_url() ?>assets/img/2.png" class="brand-image img-circle elevation-3"
+           style="opacity: 200" witdh="110" height="150">
+           <br>
 <div class="login-box">
 
+ 
   <div class="login-logo">
-    <label><a>SELAMAT DATANG DI SIAKAD</a></label>
+      <h1><strong>PT BASIRIH</strong> </h1>
   </div>
-  <!-- /.login-logo -->
+  <!-- /.login-capture -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">SILAHKAN LOGIN</p>
@@ -60,7 +73,9 @@
           <!-- /.col -->
         </div>
       </form>
+      <div><br>
 
+      <?php echo anchor('administrator/admin/absenkaryawan/input','<button class="btn btn-sm btn-primary mb-3"><i class="fas fa-plus fa-mr"></i> ABSEN </button>') ?>
       
       <!-- /.social-auth-links -->
     </div>
