@@ -1,42 +1,35 @@
 <?php
 
-class Gaji_model extends CI_Model{
-		
-		
+class Gaji_model extends CI_Model
+{
 
-		public function tampil_data($table)
-		{
-			return $this->db->get($table);
-		}
+    private $table = 'tb_gaji';
 
-		public function input_data($data,$table)
-		{
-			$this->db->insert($table,$data);
-		}
+    public function read($select, $where, $order = '', $limit = '', $start = '')
+    {
+        $this->db->select($select);
+        $this->db->join('tb_pegawai b', 'b.id_pegawai = a.id_pegawai', 'left');
+        $this->db->join('tb_jabatan c', 'c.id_jabatan = b.id_jabatan', 'left');
+        $this->db->join('tb_divisi d', 'd.id_divisi = b.id_divisi', 'left');
+        if (!empty($where)) $this->db->where($where);
+        $this->db->order_by($order);
+        return $this->db->get("$this->table a", $limit, $start);
+    }
 
-		public function edit_data($where,$table)
-		{
-			return $this->db->get_where($table,$where);
-		}
+    public function insert($data)
+    {
+        return $this->db->insert($this->table, $data);
+    }
 
-		public function update_data($where,$data,$table)
-		{
-			$this->db->where($where);
-			$this->db->update($table,$data);
-		}
-		
-		public function hapus_data($where,$table)
-		{
-			$this->db->where($where);
-			return $this->db->delete($table);
-		}
-		public function view_by_tgl_pengiriman($tgl)
-		{
-		$this->db->where('tgl', $tgl);
-		return $this->db->get('tb_gaji')->result();
-		}
-		public function view_all()
-		{
-		return $this->db->get('tb_gaji')->result();
-		}
+    public function update($where, $data)
+    {
+        $this->db->where($where);
+        return $this->db->update($this->table, $data);
+    }
+
+    public function delete($where)
+    {
+        $this->db->where($where);
+        return $this->db->delete($this->table);
+    }
 }

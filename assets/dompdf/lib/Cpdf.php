@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A PHP class to provide the basic functionality to create a pdf document without
  * any requirement for additional modules.
@@ -15,6 +16,7 @@
  * @license Public Domain http://creativecommons.org/licenses/publicdomain/
  * @package Cpdf
  */
+
 use FontLib\Font;
 use FontLib\BinaryStream;
 
@@ -343,7 +345,7 @@ class Cpdf
     function __construct($pageSize = array(0, 0, 612, 792), $isUnicode = false, $fontcache = '', $tmp = '')
     {
         $this->isUnicode = $isUnicode;
-        $this->fontcache = rtrim($fontcache, DIRECTORY_SEPARATOR."/\\");
+        $this->fontcache = rtrim($fontcache, DIRECTORY_SEPARATOR . "/\\");
         $this->tmp = ($tmp !== '' ? $tmp : sys_get_temp_dir());
         $this->newDocument($pageSize);
 
@@ -388,13 +390,13 @@ class Cpdf
                 $tmp = '';
                 switch ($options['type']) {
                     case 'XYZ':
-                    /** @noinspection PhpMissingBreakStatementInspection */
+                        /** @noinspection PhpMissingBreakStatementInspection */
                     case 'FitR':
                         $tmp = ' ' . $options['p3'] . $tmp;
                     case 'FitH':
                     case 'FitV':
                     case 'FitBH':
-                    /** @noinspection PhpMissingBreakStatementInspection */
+                        /** @noinspection PhpMissingBreakStatementInspection */
                     case 'FitBV':
                         $tmp = ' ' . $options['p1'] . ' ' . $options['p2'] . $tmp;
                     case 'Fit':
@@ -437,7 +439,7 @@ class Cpdf
 
                 foreach ($options as $k => $v) {
                     switch ($k) {
-                        // Boolean keys
+                            // Boolean keys
                         case 'HideToolbar':
                         case 'HideMenubar':
                         case 'HideWindowUI':
@@ -448,12 +450,12 @@ class Cpdf
                             $o['info'][$k] = (bool)$v;
                             break;
 
-                        // Integer keys
+                            // Integer keys
                         case 'NumCopies':
                             $o['info'][$k] = (int)$v;
                             break;
 
-                        // Name keys
+                            // Name keys
                         case 'ViewArea':
                         case 'ViewClip':
                         case 'PrintClip':
@@ -461,7 +463,7 @@ class Cpdf
                             $o['info'][$k] = (string)$v;
                             break;
 
-                        // Named with limited valid values
+                            // Named with limited valid values
                         case 'NonFullScreenPageMode':
                             if (!in_array($v, array('UseNone', 'UseOutlines', 'UseThumbs', 'UseOC'))) {
                                 continue;
@@ -490,7 +492,7 @@ class Cpdf
                             $o['info'][$k] = $v;
                             break;
 
-                        // Integer array
+                            // Integer array
                         case 'PrintPageRange':
                             // Cast to integer array
                             foreach ($v as $vK => $vV) {
@@ -728,12 +730,12 @@ class Cpdf
                         if (isset($o['info']['mediaBox'])) {
                             $tmp = $o['info']['mediaBox'];
                             $res .= "\n/MediaBox [" . sprintf(
-                                    '%.3F %.3F %.3F %.3F',
-                                    $tmp[0],
-                                    $tmp[1],
-                                    $tmp[2],
-                                    $tmp[3]
-                                ) . ']';
+                                '%.3F %.3F %.3F %.3F',
+                                $tmp[0],
+                                $tmp[1],
+                                $tmp[2],
+                                $tmp[3]
+                            ) . ']';
                         }
                     }
 
@@ -1628,12 +1630,12 @@ EOT;
                 if (isset($o['info']['mediaBox'])) {
                     $tmp = $o['info']['mediaBox'];
                     $res .= "\n/MediaBox [" . sprintf(
-                            '%.3F %.3F %.3F %.3F',
-                            $tmp[0],
-                            $tmp[1],
-                            $tmp[2],
-                            $tmp[3]
-                        ) . ']';
+                        '%.3F %.3F %.3F %.3F',
+                        $tmp[0],
+                        $tmp[1],
+                        $tmp[2],
+                        $tmp[3]
+                    ) . ']';
                 }
                 $res .= "\n/Parent " . $o['info']['parent'] . " 0 R";
 
@@ -1818,7 +1820,7 @@ EOT;
                 // make the new object
                 $this->objects[$id] = array('t' => 'image', 'data' => &$options['data'], 'info' => array());
 
-                $info =& $this->objects[$id]['info'];
+                $info = &$this->objects[$id]['info'];
 
                 $info['Type'] = '/XObject';
                 $info['Subtype'] = '/Image';
@@ -2139,8 +2141,7 @@ EOT;
             . chr(hexdec(substr($hex, 2, 2)))
             . chr(hexdec(substr($hex, 0, 2)))
             . chr(0)
-            . chr(0)
-        ;
+            . chr(0);
         $key = $this->md5_16($tmp);
         $this->ARC4_init(substr($key, 0, 10));
     }
@@ -2343,8 +2344,7 @@ EOT;
         $content .= "trailer\n<<\n" .
             '/Size ' . (count($xref) + 1) . "\n" .
             '/Root 1 0 R' . "\n" .
-            '/Info ' . $this->infoObject . " 0 R\n"
-        ;
+            '/Info ' . $this->infoObject . " 0 R\n";
 
         // if encryption has been applied to this document then add the marker for this dictionary
         if ($this->arc4_objnum > 0) {
@@ -2416,7 +2416,7 @@ EOT;
 
         $fontcache = $this->fontcache;
         if ($fontcache == '') {
-            $fontcache = rtrim($dir, DIRECTORY_SEPARATOR."/\\");
+            $fontcache = rtrim($dir, DIRECTORY_SEPARATOR . "/\\");
         }
 
         //$name       filename without folder and extension of font metrics
@@ -2514,7 +2514,7 @@ EOT;
                             $data[$key] = explode(' ', trim(substr($row, $pos)));
                             break;
 
-                        //C 39 ; WX 222 ; N quoteright ; B 53 463 157 718 ;
+                            //C 39 ; WX 222 ; N quoteright ; B 53 463 157 718 ;
                         case 'C': // Found in AFM files
                             $bits = explode(';', trim($row));
                             $dtmp = array();
@@ -2556,7 +2556,7 @@ EOT;
 
                             break;
 
-                        // U 827 ; WX 0 ; N squaresubnosp ; G 675 ;
+                            // U 827 ; WX 0 ; N squaresubnosp ; G 675 ;
                         case 'U': // Found in UFM files
                             if (!$data['isUnicode']) {
                                 break;
@@ -3169,7 +3169,8 @@ EOT;
         }
 
         // Only create a new graphics state if required
-        if ($mode === $this->currentLineTransparency["mode"] &&
+        if (
+            $mode === $this->currentLineTransparency["mode"] &&
             $opacity == $this->currentLineTransparency["opacity"]
         ) {
             return;
@@ -3219,7 +3220,8 @@ EOT;
             $mode = "Normal";
         }
 
-        if ($mode === $this->currentFillTransparency["mode"] &&
+        if (
+            $mode === $this->currentFillTransparency["mode"] &&
             $opacity == $this->currentFillTransparency["opacity"]
         ) {
             return;
@@ -4072,7 +4074,7 @@ EOT;
                     for ($j = 1; $j < $numbytes; $j++) {
                         $c += ($bytes[$j] << (($numbytes - $j - 1) * 0x06));
                     }
-                    if ((($c >= 0xD800) AND ($c <= 0xDFFF)) OR ($c >= 0x10FFFF)) {
+                    if ((($c >= 0xD800) and ($c <= 0xDFFF)) or ($c >= 0x10FFFF)) {
                         // The definition of UTF-8 prohibits encoding character numbers between
                         // U+D800 and U+DFFF, which are reserved for use with the UTF-16
                         // encoding form (as surrogate pairs) and do not directly represent
@@ -4383,7 +4385,6 @@ EOT;
             if ($char_spacing != 0) {
                 $w += $char_spacing * $space_scale * (count($unicode) + $n_spaces);
             }
-
         } else {
             // If CPDF is in Unicode mode but the current font does not support Unicode we need to convert the character set to Windows-1252
             if ($this->isUnicode) {
@@ -5158,7 +5159,7 @@ EOT;
                             $transparency = array();
 
                             switch ($info['colorType']) {
-                                // indexed color, rbg
+                                    // indexed color, rbg
                                 case 3:
                                     /* corresponding to entries in the plte chunk
                                      Alpha for palette index 0: 1 byte
@@ -5179,7 +5180,7 @@ EOT;
                                     $transparency['data'] = $trans;
                                     break;
 
-                                // grayscale
+                                    // grayscale
                                 case 0:
                                     /* corresponding to entries in the plte chunk
                                      Gray: 2 bytes, range 0 .. (2^bitdepth)-1
@@ -5189,7 +5190,7 @@ EOT;
                                     $transparency['data'] = ord($data[$p + 8 + 1]);
                                     break;
 
-                                // truecolor
+                                    // truecolor
                                 case 2:
                                     /* corresponding to entries in the plte chunk
                                      Red: 2 bytes, range 0 .. (2^bitdepth)-1
@@ -5206,7 +5207,7 @@ EOT;
                                     $transparency['type'] = 'color-key';
                                     break;
 
-                                //unsupported transparency type
+                                    //unsupported transparency type
                                 default:
                                     if (defined("DEBUGPNG") && DEBUGPNG) {
                                         print '[addPngFromFile unsupported transparency type ' . $file . ']';

@@ -26,6 +26,7 @@
             <div class="card-body">
                 <form action="<?= base_url('administrator/admin/jabatan/update') ?>" method="POST">
                     <input type="hidden" name="id_jabatan" value="<?= $jabatan->id_jabatan ?>">
+                    <input type="hidden" name="old_gaji_jabatan" value="<?= $old_gaji_jabatan ?>">
                     <div class="form-group">
                         <label for="">Nama Jabatan</label>
                         <input type="text" name="nama_jabatan" class="form-control" value="<?= $jabatan->nama_jabatan ?>">
@@ -33,6 +34,24 @@
                     <div class="form-group">
                         <label for="">Gaji Jabatan</label>
                         <input type="number" name="gaji_jabatan" class="form-control" value="<?= $jabatan->gaji_jabatan ?>" data-type="currency">
+                    </div>
+                    <div class="form-group">
+                        <label for="">User Type</label>
+                        <select name="id_usertype" id="" class="form-control select2-container" style="width: 100%" required>
+                            <option value="">Select User Type</option>
+                            <?php
+                            foreach ($usertype as $ut) {
+                                if ($jabatan->id_usertype == $ut->id_usertype)
+                                    echo '<option value="' . $ut->id_usertype . '" selected>' . ucfirst($ut->usertype_name) . '</option>';
+                                else
+                                    echo '<option value="' . $ut->id_usertype . '">' . ucfirst($ut->usertype_name) . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Remarks</label>
+                        <input type="text" name="remarks" class="form-control" required>
                     </div>
             </div>
             <div class="card-footer float-right">

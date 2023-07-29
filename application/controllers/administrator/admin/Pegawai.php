@@ -50,11 +50,11 @@ class Pegawai extends CI_Controller
 
         if (!empty($this->id_jabatan)) {
             $data['id_jabatan'] = $this->id_jabatan;
-            $where['id_jabatan'] = $this->id_jabatan;
+            $where['a.id_jabatan'] = $this->id_jabatan;
         }
         if (!empty($this->id_divisi)) {
             $data['id_divisi'] = $this->id_divisi;
-            $where['id_divisi'] = $this->id_divisi;
+            $where['a.id_divisi'] = $this->id_divisi;
         }
         if (!empty($this->nik_pegawai)) {
             $data['nik_pegawai'] = $this->nik_pegawai;
@@ -69,8 +69,13 @@ class Pegawai extends CI_Controller
             $where['status_kawin_pegawai'] = $this->status_kawin_pegawai;
         }
         if (!empty($this->status_aktif_pegawai)) {
-            $data['status_aktif_pegawai'] = $this->status_aktif_pegawai;
-            $where['status_aktif_pegawai'] = $this->status_aktif_pegawai;
+            if ($this->status_aktif_pegawai == 'true') {
+                $data['status_aktif_pegawai'] = 1;
+                $where['status_aktif_pegawai'] = 1;
+            } else {
+                $data['status_aktif_pegawai'] = 0;
+                $where['status_aktif_pegawai'] = 0;
+            }
         }
 
         $data['pegawai'] = $this->pegawai->read(['*'], $where, null, null, null)->result();
@@ -285,5 +290,36 @@ class Pegawai extends CI_Controller
         $this->load->view('templates_administrator/sidebaradmin', $data);
         $this->load->view('administrator/admin/pegawai/detail_pegawai', $data);
         $this->load->view('templates_administrator/footer');
+    }
+
+    public function cetak()
+    {
+        $where = array(
+            'status_aktif_pegawai' => 1
+        );
+
+        if (!empty($this->id_jabatan)) {
+            $where['a.id_jabatan'] = $this->id_jabatan;
+        }
+        if (!empty($this->id_divisi)) {
+            $where['a.id_divisi'] = $this->id_divisi;
+        }
+        if (!empty($this->nik_pegawai)) {
+            $where['LOWER(nik_pegawai) like'] = '%%' . strtolower($this->nik_pegawai) . '%%';
+        }
+        if (!empty($this->nama_pegawai)) {
+            $where['LOWER(nama_pegawai) like'] = '%%' . strtolower($this->nama_pegawai) . '%%';
+        }
+        if (!empty($this->status_kawin_pegawai)) {
+            $where['status_kawin_pegawai'] = $this->status_kawin_pegawai;
+        }
+        if (!empty($this->status_aktif_pegawai)) {
+            $where['status_aktif_pegawai'] = $this->status_aktif_pegawai;
+        }
+
+        $data['pegawai'] = $this->pegawai->read(['*'], $where, null, null, null)->result();
+
+        $this->load->library('mypdf');
+        $this->mypdf->generate('administrator/laporan/print_pegawai', $data);
     }
 }

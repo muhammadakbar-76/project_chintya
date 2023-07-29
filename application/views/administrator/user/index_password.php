@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo base_url() ?>administrator/admin/dashboardadmin">Home</a></li>
-                        <li class="breadcrumb-item active">Tambah Jabatan</li>
+                        <li class="breadcrumb-item active">Ganti Password</li>
                     </ol>
                 </div>
             </div>
@@ -21,28 +21,22 @@
     <section class="content">
         <div class="card">
             <div class="card-header with-border">
-                <div class="float-right">Tambah Jabatan</div>
+                <div class="float-right">Ganti Password</div>
             </div>
+            <?php echo $this->session->flashdata('pesan') ?>
             <div class="card-body">
-                <form action="<?= base_url('administrator/admin/jabatan/save') ?>" method="POST">
+                <form action="<?= base_url('administrator/user/change_password/save') ?>" method="POST">
                     <div class="form-group">
-                        <label for="">Nama Jabatan</label>
-                        <input type="text" name="nama_jabatan" class="form-control" required>
+                        <label for="">Password Lama</label>
+                        <input type="password" name="old_password" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="">Gaji Jabatan</label>
-                        <input type="number" name="gaji_jabatan" class="form-control" data-type="currency" required>
+                        <label for="">Password Baru</label>
+                        <input type="password" name="new_password" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="">User Type</label>
-                        <select name="id_usertype" id="" class="form-control select2-container" style="width: 100%" required>
-                            <option value="">Select User Type</option>
-                            <?php
-                            foreach ($usertype as $ut) {
-                                echo '<option value="' . $ut->id_usertype . '">' . ucfirst($ut->usertype_name) . '</option>';
-                            }
-                            ?>
-                        </select>
+                        <label for="">Konfirmasi Password Baru</label>
+                        <input type="password" name="confirm_new_password" class="form-control" required>
                     </div>
             </div>
             <div class="card-footer float-right">

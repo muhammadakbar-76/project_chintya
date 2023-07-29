@@ -37,6 +37,7 @@
                                     <th>NO</th>
                                     <th>Nama Jabatan</th>
                                     <th>Gaji Jabatan</th>
+                                    <th>User Type</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
@@ -48,6 +49,7 @@
                                         <td width="20px"><?php echo $no++ ?></td>
                                         <td><?= $pg->nama_jabatan ?></td>
                                         <td>Rp. <?= number_format($pg->gaji_jabatan, 0, ',', '.') ?></td>
+                                        <td><?= strtoupper($pg->usertype_name) ?></td>
                                         <td>
                                             <a width="20px"><?php echo anchor('administrator/admin/jabatan/view/' . $pg->id_jabatan, '<div class="btn btn-info btn-sm"><i class="fa fa-pencil-alt"></i></div>') ?>
                                             </a>

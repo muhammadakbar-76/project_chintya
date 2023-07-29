@@ -39,7 +39,7 @@ class Auth extends CI_Controller
 				if ($sess_data['level'] == 'admin' || $sess_data['username'] == 'admin') {
 					redirect('administrator/admin/dashboardadmin');
 				} elseif ($sess_data['level'] == 'hrd') {
-					redirect('administrator/admin/dashboarduser');
+					redirect('administrator/hrd/dashboardhrd');
 				} elseif ($sess_data['level'] == 'pegawai') {
 					redirect('administrator/admin/dashboardpegawai');
 				}

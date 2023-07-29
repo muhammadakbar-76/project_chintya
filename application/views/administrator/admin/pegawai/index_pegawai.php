@@ -32,7 +32,7 @@
                         <div class="card-title">Search Filter</div>
                     </div>
                     <div class="card-body">
-                        <form action="" method="get">
+                        <form action="" method="post">
                             <div class="row">
                                 <div class="form-group col-3">
                                     <label for="">NIK</label>
@@ -74,18 +74,18 @@
                                     <label for="">Status Kawin</label>
                                     <select name="status_kawin_pegawai" id="" class="form-control">
                                         <option value="">Select Status</option>
-                                        <option value="kawin" <?= $status_kawin_pegawai == 'kawin' ? 'selected' : '' ?>>Kawin</option>
-                                        <option value="belum kawin" <?= $status_kawin_pegawai == 'belum kawin' ? 'selected' : '' ?>>Belum Kawin</option>
-                                        <option value="janda" <?= $status_kawin_pegawai == 'janda' ? 'selected' : '' ?>>Janda</option>
-                                        <option value="duda" <?= $status_kawin_pegawai == 'duda' ? 'selected' : '' ?>>Duda</option>
+                                        <option value="kawin" <?= !empty($status_kawin_pegawai) && $status_kawin_pegawai == 'kawin' ? 'selected' : '' ?>>Kawin</option>
+                                        <option value="belum kawin" <?= !empty($status_kawin_pegawai) && $status_kawin_pegawai == 'belum kawin' ? 'selected' : '' ?>>Belum Kawin</option>
+                                        <option value="janda" <?= !empty($status_kawin_pegawai) && $status_kawin_pegawai == 'janda' ? 'selected' : '' ?>>Janda</option>
+                                        <option value="duda" <?= !empty($status_kawin_pegawai) && $status_kawin_pegawai == 'duda' ? 'selected' : '' ?>>Duda</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-3">
                                     <label for="">Status Aktif</label>
                                     <select name="status_aktif_pegawai" id="" class="form-control">
                                         <option value="">Select Status</option>
-                                        <option value="1" <?= $status_aktif_pegawai == '1' ? 'selected' : '' ?>>Aktif</option>
-                                        <option value="0" <?= $status_aktif_pegawai == '0' ? 'selected' : '' ?>>Non Aktif</option>
+                                        <option value="true" <?= !empty($status_aktif_pegawai) && $status_aktif_pegawai == 1 ? 'selected' : '' ?>>Aktif</option>
+                                        <option value="false" <?= !empty($status_aktif_pegawai) && $status_aktif_pegawai == 0 ? 'selected' : '' ?>>Non Aktif</option>
                                     </select>
                                 </div>
                             </div>
@@ -109,6 +109,8 @@
                     <div class="card-body">
 
                         <?php echo anchor('administrator/admin/pegawai/add', '<button class="btn btn-sm btn-primary mb-3"><i class="fas fa-plus fa-mr"></i> Tambah </button>') ?>
+
+                        <button type="button" onclick="cetak()" class="btn btn-sm btn-success mb-3"><i class="fas fa-print fa-mr"></i> Cetak </button>
 
                         <table id="example1" class="table table-bordered table-striped table-hover">
                             <thead>
@@ -180,6 +182,24 @@
 </aside>
 <!-- /.control-sidebar -->
 </div>
+
+<script type="text/javascript">
+    function cetak() {
+        let id_jabatan = $('[name=id_jabatan]').val();
+        let id_divisi = $('[name=id_divisi]').val();
+        let nik_pegawai = $('[name=nik_pegawai]').val();
+        let nama_pegawai = $('[name=nama_pegawai]').val();
+        let status_kawin_pegawai = $('[name=status_kawin_pegawai]').val();
+        let status_aktif_pegawai = $('[name=status_aktif_pegawai]').val();
+
+        window.location.href = '<?= base_url('administrator/admin/pegawai/cetak?id_jabatan=') ?>' + id_jabatan +
+            '&id_divisi=' + id_divisi +
+            '&nik_pegawai=' + nik_pegawai +
+            '&nama_pegawai=' + nama_pegawai +
+            '&status_kawin_pegawai=' + status_kawin_pegawai +
+            '&status_aktif_pegawai=' + status_aktif_pegawai;
+    }
+</script>
 <!-- ./wrapper -->
 
 <!-- jQuery -->

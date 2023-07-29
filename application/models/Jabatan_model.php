@@ -8,9 +8,10 @@ class Jabatan_model extends CI_Model
     public function read($select, $where, $order = '', $limit = '', $start = '')
     {
         $this->db->select($select);
+        $this->db->join('tb_usertype b', 'b.id_usertype = a.id_usertype', 'left');
         if (!empty($where)) $this->db->where($where);
         $this->db->order_by($order);
-        return $this->db->get($this->table, $limit, $start);
+        return $this->db->get("$this->table a", $limit, $start);
     }
 
     public function insert($data)

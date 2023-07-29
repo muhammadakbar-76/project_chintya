@@ -43,8 +43,8 @@
           </a>
 
           <div class="dropdown-menu">
-            <a href="<?php echo base_url() ?>administrator/pengguna" class="dropdown-item">
-              <i class="far fa-plus-square mr-2"></i>Pengguna
+            <a href="<?php echo base_url() ?>administrator/user/change_password" class="dropdown-item">
+              <i class="far fa-plus-square mr-2"></i>Change Password
             </a>
             <div class="dropdown-divider"></div>
             <a href="<?php echo base_url() ?>auth" class="dropdown-item">
